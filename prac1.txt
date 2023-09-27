@@ -1,0 +1,91 @@
+print("Practical 1")
+print("Section 1")
+print("Data Preprocessing")
+
+import pandas as pd
+df = pd.read_csv("E:\\Journals\\DWM\\train.csv")
+
+df.info()
+
+df.isnull().sum()
+
+df = df.drop("Cabin",axis = 1)
+df.info()
+
+cols = ["Name","Fare"]
+df = df.drop(cols,axis = 1)
+df.info()
+
+df1 = pd.read_csv("E:\\Journals\\DWM\\train.csv")
+mean_age = df1["Age"].mean()
+df1["Age"].fillna(mean_age,inplace = True)
+df1.isnull().sum()
+
+df2 = df["Age"].fillna(43)
+df.info()
+
+df["Embarked"].fillna('NA',inplace = True)
+df.info()
+
+df = df.dropna()
+df.info()
+
+df.nunique()
+
+df["Pclass"].value_counts()
+
+df.drop_duplicates(inplace = True)
+df.values
+
+from sklearn.model_selection import train_test_split
+df = pd.read_csv("E:\\Journals\\DWM\\train.csv")
+x = df.values
+x = df.drop("Survived",axis = 1).values
+y = df["Survived"].values
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.3)
+print("X train shape : {}".format(x_train.shape))
+print("X test shape : {}".format(x_test.shape))
+print("Y train shape : {}".format(y_train.shape))
+print("Y test shape : {}".format(y_test.shape))
+
+print("Section 2")
+df = pd.read_csv("E:\\Journals\\DWM\\housing.csv")
+df.info()
+
+df.shape
+
+df.isnull().sum()
+
+df = df.drop('households',axis = 1)
+df.info()
+
+house1 = df['total_bedrooms'].fillna(4)
+house1.isnull().sum()
+
+df1 = df.dropna()
+df1.info()
+
+df.nunique()
+
+
+df["ocean_proximity"].value_counts()
+
+
+from sklearn.model_selection import train_test_split
+df = pd.read_csv("E:\\Journals\\DWM\\housing.csv")
+x = df.values
+x = df.drop("ocean_proximity",axis = 1).values
+y = df["ocean_proximity"].values
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.3)
+print("X train shape : {}".format(x_train.shape))
+print("X test shape : {}".format(x_test.shape))
+print("Y train shape : {}".format(y_train.shape))
+print("Y test shape : {}".format(y_test.shape))
+
+
+
+df = pd.read_csv("E:\\Journals\\DWM\\housing.csv")
+df.info()
+
+df.drop_duplicates(inplace = True)
+df.info()
